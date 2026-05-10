@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NARRATIVE</title>
+
+  <!-- Theme init: FOUC（白→黒のちらつき）を防ぐため <head> で同期的に適用 -->
+  <script>
+    (function() {
+      try {
+        if (localStorage.getItem("theme") === "dark") {
+          document.documentElement.classList.add("dark");
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ── Header / Navigation Bar ── -->
+  <nav class="navbar">
+    <div class="navbar-left">
+      <select class="navbar-menu" id="navbar-menu" aria-label="NARRATIVE メニュー">
+        <option value="" disabled selected hidden>NARRATIVE</option>
+        <option value="home">Home</option>
+        <option value="about">About</option>
+        <option value="contact">Contact</option>
+        <option value="shop">Shop</option>
+      </select>
+    </div>
+    <div class="navbar-center navbar-center-ghost">
+<div class="navbar-icon" id="navbar-icon-ghost" aria-hidden="true">
+      <svg viewBox="0 0 2000 2000" xmlns="http://www.w3.org/2000/svg" class="navbar-icon-svg" aria-hidden="true">
+          <path class="icon-silhouette" d="M1000.46,1160.38c-197.51,0-367.46-169.7-367.46-388.9-.92-216.54,170.87-381.83,367.46-381.83s366.54,161.75,366.54,380.06-169.95,390.66-366.54,390.66Z"/>
+          <path class="icon-silhouette" d="M1001.51,1877.9c236.94,0,451.85-93.97,609.77-246.56,26.91-26.01,25.99-69.89-2.39-94.3-153.7-132.24-374.31-212.35-611.06-212.35s-452.45,79.31-606.26,208.97c-28.7,24.19-29.94,68.23-3.08,94.46,158.21,154.48,374.43,249.78,613.02,249.78Z"/>
+        </svg>
+      </div>
+    </div>
+    <div class="navbar-actions">
+      <div class="navbar-menu navbar-count" id="navbar-count" aria-label="記事数">
+        <span id="navbar-count-label"></span>
+        <span class="count-badge-dot"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Navbar Center Icon (fixed, non-sticky) ── -->
+  <div class="navbar-icon-fixed-wrap" id="navbar-icon-fixed-wrap">
+<div class="navbar-icon" id="navbar-icon" role="button" aria-label="NARRATIVE ホームへ戻る">
+    <svg viewBox="0 0 2000 2000" xmlns="http://www.w3.org/2000/svg" class="navbar-icon-svg" aria-hidden="true">
+      <path class="icon-silhouette" d="M1000.46,1160.38c-197.51,0-367.46-169.7-367.46-388.9-.92-216.54,170.87-381.83,367.46-381.83s366.54,161.75,366.54,380.06-169.95,390.66-366.54,390.66Z"/>
+      <path class="icon-silhouette" d="M1001.51,1877.9c236.94,0,451.85-93.97,609.77-246.56,26.91-26.01,25.99-69.89-2.39-94.3-153.7-132.24-374.31-212.35-611.06-212.35s-452.45,79.31-606.26,208.97c-28.7,24.19-29.94,68.23-3.08,94.46,158.21,154.48,374.43,249.78,613.02,249.78Z"/>
+    </svg>
+  </div>
+  </div>
+
+  <!-- ── Main Content (rendered by app.js) ── -->
+  <main id="app"></main>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <span id="footer-timestamp"></span>
+  </footer>
+
+  <!-- ── Bottom Bar (View Switcher + Sort) — home page only ── -->
+  <div class="bottom-bar" id="bottom-bar">
+    <div class="view-switcher" id="view-switcher" role="tablist" aria-label="サムネイル表示切替">
+      <button class="view-switcher-btn is-active" data-view="portrait" role="tab" aria-selected="true">👤</button>
+      <button class="view-switcher-btn" data-view="pickup" role="tab" aria-selected="false">📁</button>
+      <span class="view-switcher-indicator"></span>
+    </div>
+    <select class="sort-float" id="sort-float" aria-label="並び替え">
+      <option value="" disabled selected hidden>並び替え</option>
+      <option value="newest">新しい順</option>
+      <option value="oldest">古い順</option>
+      <option value="name">名前（あいうえお順）</option>
+    </select>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
