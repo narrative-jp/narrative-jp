@@ -1120,7 +1120,7 @@ img {
 .detail-credit {
   margin-top: var(--spacing-2xl);
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.08px;
   color: #8e8e93;
 }
