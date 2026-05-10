@@ -495,12 +495,12 @@ function renderDetailPage(id) {
   const container = document.createElement("div");
   container.className = "detail-container animate-in";
 
-  const contentHtml = interview.content.map(p => {
-    if (p.startsWith("[img]")) {
-      const src = p.replace("[img]", "");
-      return `<img class="detail-content-img" src="${src}" alt="" loading="lazy" />`;
+  const contentHtml = interview.content.map(block => {
+    if (block.type === "image") {
+      return `<img class="detail-content-img" src="${block.src}" alt="" loading="lazy" />`;
     }
-    return `<p class="${p.startsWith("──") ? "question" : ""}">${p}</p>`;
+    const text = block.text ?? block;
+    return `<p class="${String(text).startsWith("──") ? "question" : ""}">${text}</p>`;
   }).join("");
 
   const tagsHtml = interview.tags.map(tag =>

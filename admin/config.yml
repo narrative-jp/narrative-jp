@@ -46,5 +46,20 @@ collections:
               - name: content
                 label: "インタビュー本文"
                 widget: list
-                field: {name: paragraph, label: "段落テキスト", widget: text}
-                hint: "1段落ずつ追加。質問は「── 質問文」、画像は「[img]images/ファイル名.jpg」と入力"
+                types:
+                  - name: paragraph
+                    label: "テキスト段落"
+                    widget: object
+                    fields:
+                      - {name: text, label: "本文", widget: text}
+                  - name: image
+                    label: "画像"
+                    widget: object
+                    fields:
+                      - name: src
+                        label: "画像ファイル"
+                        widget: image
+                      - name: caption
+                        label: "キャプション（任意）"
+                        widget: string
+                        required: false
