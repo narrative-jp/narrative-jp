@@ -53,13 +53,25 @@ const REFERENCES = [
 ];
 
 // ── Utility: Generate gradient background for placeholder thumbnails ──
-function generateGradient(index) {
-  const hues = [
-    [195, 210], [200, 220], [190, 215], [205, 225], [198, 212],
-    [192, 218], [202, 208], [196, 222], [188, 214], [204, 216],
+function generateGradient(id) {
+  // IDのハッシュから色を決定（同じIDは常に同じ色）
+  let hash = 0;
+  const str = String(id);
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash * 31 + str.charCodeAt(i)) & 0xFFFF;
+  }
+  // Appleシステムカラーに近い色相パレット（青を除外）
+  const palette = [
+    [0, 10],    // レッド
+    [25, 35],   // オレンジ
+    [155, 165], // ティール
+    [240, 250], // インディゴ
+    [270, 280], // パープル
+    [295, 305], // バイオレット
+    [335, 345], // ピンク
   ];
-  const [h1, h2] = hues[index % hues.length];
-  return `linear-gradient(180deg, hsl(${h1}, 85%, 60%) 0%, hsl(${h2}, 90%, 55%) 100%)`;
+  const [h1, h2] = palette[hash % palette.length];
+  return `linear-gradient(180deg, hsl(${h1}, 75%, 65%) 0%, hsl(${h2}, 80%, 58%) 100%)`;
 }
 
 // ── Simple Hash Router ──
@@ -301,7 +313,7 @@ function renderCard(interview, index) {
   card.addEventListener("click", () => navigate(`/interview/${interview.id}`));
 
   const thumbSrc = getThumbSrc(interview, currentView);
-  const gradient = generateGradient(index);
+  const gradient = generateGradient(interview.id);
 
   card.innerHTML = `
     <div class="card-thumb-wrapper">
@@ -351,7 +363,7 @@ function renderReferenceCard(ref, index) {
   card.style.cursor = "pointer";
   card.addEventListener("click", () => window.open(ref.url, "_blank", "noopener"));
 
-  const gradient = generateGradient(index);
+  const gradient = generateGradient(interview.id);
 
   card.innerHTML = `
     <div class="card-thumb-wrapper">
@@ -511,7 +523,7 @@ function renderDetailPage(id) {
     <button class="detail-back" id="detail-back-btn">${ICONS.chevronLeft} NARRATIVE</button>
 
     <div class="detail-hero">
-      <div class="detail-hero-inner" style="background: ${generateGradient(index)}">
+      <div class="detail-hero-inner" style="background: ${generateGradient(interview.id)}">
         <img
           class="detail-hero-img"
           src="${getThumbSrc(interview, 'portrait')}"
@@ -525,7 +537,7 @@ function renderDetailPage(id) {
     <h1 class="detail-headline">${interview.excerpt}</h1>
 
     <div class="detail-profile">
-      <div class="detail-profile-avatar" style="background: ${generateGradient(index)}">
+      <div class="detail-profile-avatar" style="background: ${generateGradient(interview.id)}">
         ${interview.alias.charAt(0)}
       </div>
       <div class="detail-profile-info">
