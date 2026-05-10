@@ -7,27 +7,59 @@
 let INTERVIEWS = [];
 
 // ── Reference Data ──
-let REFERENCES = [];
-let ABOUT = {};
+const REFERENCES = [
+  {
+    id: "R-001",
+    title: "タイトル（仮）",
+    source: "著者 / メディア名",
+    excerpt: "このリファレンスがプロジェクトに与えた影響についての短いメモ。",
+    url: "https://example.com"
+  },
+  {
+    id: "R-002",
+    title: "タイトル（仮）",
+    source: "著者 / メディア名",
+    excerpt: "このリファレンスがプロジェクトに与えた影響についての短いメモ。",
+    url: "https://example.com"
+  },
+  {
+    id: "R-003",
+    title: "タイトル（仮）",
+    source: "著者 / メディア名",
+    excerpt: "このリファレンスがプロジェクトに与えた影響についての短いメモ。",
+    url: "https://example.com"
+  },
+  {
+    id: "R-004",
+    title: "タイトル（仮）",
+    source: "著者 / メディア名",
+    excerpt: "このリファレンスがプロジェクトに与えた影響についての短いメモ。",
+    url: "https://example.com"
+  },
+  {
+    id: "R-005",
+    title: "タイトル（仮）",
+    source: "著者 / メディア名",
+    excerpt: "このリファレンスがプロジェクトに与えた影響についての短いメモ。",
+    url: "https://example.com"
+  },
+  {
+    id: "R-006",
+    title: "タイトル（仮）",
+    source: "著者 / メディア名",
+    excerpt: "このリファレンスがプロジェクトに与えた影響についての短いメモ。",
+    url: "https://example.com"
+  },
+];
 
 // ── Utility: Generate gradient background for placeholder thumbnails ──
-function generateGradient(id) {
-  let hash = 0;
-  const str = String(id);
-  for (let i = 0; i < str.length; i++) {
-    hash = (hash * 31 + str.charCodeAt(i)) & 0xFFFF;
-  }
-  const palette = [
-    [0, 10],    // レッド
-    [25, 35],   // オレンジ
-    [155, 165], // ティール
-    [240, 250], // インディゴ
-    [270, 280], // パープル
-    [295, 305], // バイオレット
-    [335, 345], // ピンク
+function generateGradient(index) {
+  const hues = [
+    [195, 210], [200, 220], [190, 215], [205, 225], [198, 212],
+    [192, 218], [202, 208], [196, 222], [188, 214], [204, 216],
   ];
-  const [h1, h2] = palette[hash % palette.length];
-  return `linear-gradient(180deg, hsl(${h1}, 75%, 65%) 0%, hsl(${h2}, 80%, 58%) 100%)`;
+  const [h1, h2] = hues[index % hues.length];
+  return `linear-gradient(180deg, hsl(${h1}, 85%, 60%) 0%, hsl(${h2}, 90%, 55%) 100%)`;
 }
 
 // ── Simple Hash Router ──
@@ -269,7 +301,7 @@ function renderCard(interview, index) {
   card.addEventListener("click", () => navigate(`/interview/${interview.id}`));
 
   const thumbSrc = getThumbSrc(interview, currentView);
-  const gradient = generateGradient(interview.id);
+  const gradient = generateGradient(index);
 
   card.innerHTML = `
     <div class="card-thumb-wrapper">
@@ -319,13 +351,11 @@ function renderReferenceCard(ref, index) {
   card.style.cursor = "pointer";
   card.addEventListener("click", () => window.open(ref.url, "_blank", "noopener"));
 
-  const gradient = generateGradient(ref.id || index);
+  const gradient = generateGradient(index);
 
   card.innerHTML = `
     <div class="card-thumb-wrapper">
-      <div class="card-thumb" style="background: ${gradient}">
-        ${ref.image ? `<img class="card-thumb-img" src="${ref.image}" alt="${ref.title}" loading="lazy" onerror="this.style.display='none'" />` : ""}
-      </div>
+      <div class="card-thumb" style="background: ${gradient}"></div>
       <span class="card-id">${ref.id}</span>
       <span class="card-external">${ICONS.external}</span>
     </div>
@@ -485,7 +515,7 @@ function renderDetailPage(id) {
     <button class="detail-back" id="detail-back-btn">${ICONS.chevronLeft} NARRATIVE</button>
 
     <div class="detail-hero">
-      <div class="detail-hero-inner" style="background: ${generateGradient(interview.id)}">
+      <div class="detail-hero-inner" style="background: ${generateGradient(index)}">
         <img
           class="detail-hero-img"
           src="${getThumbSrc(interview, 'portrait')}"
@@ -499,7 +529,7 @@ function renderDetailPage(id) {
     <h1 class="detail-headline">${interview.excerpt}</h1>
 
     <div class="detail-profile">
-      <div class="detail-profile-avatar" style="background: ${generateGradient(interview.id)}">
+      <div class="detail-profile-avatar" style="background: ${generateGradient(index)}">
         ${interview.alias.charAt(0)}
       </div>
       <div class="detail-profile-info">
@@ -545,28 +575,33 @@ function renderAboutPage() {
   const container = document.createElement("div");
   container.className = "about-container animate-in";
 
-  const toParagraphs = text =>
-    (text || "").split("\n\n").map(p =>
-      `<p>${p.replace(/\n/g, "<br/>")}</p>`
-    ).join("");
-
-  const email = ABOUT.contact_email || "hello@narrative.jp";
-
   container.innerHTML = `
     <div class="about-body">
       <h2 class="about-section-title">WHAT IS NARRATIVE?</h2>
-      ${toParagraphs(ABOUT.what_is_narrative)}
+      <p>
+        電車で隣に座っている人も、<br class="br-sp"/>いつも行くコンビニの店員も、<br class="br-pc"/><br class="br-sp"/>運転席で黙っているタクシー運転手も。
+      </p>
+      <p>
+      　私たちにはそれぞれの生い立ちがあり、<br class="br-sp"/>今日を生きています。
+      </p>
+      <p>
+        子どもの頃になにを見て、昨日なにを考えて、<br class="br-pc"/><br class="br-sp"/>明日なにをしようとしているのか。<br class="br-pc"/><br class="br-sp"/>インタビューを通して「誰か」である誰かの<br class="br-sp"/>人生を記録するメディアです。
+      </p>
 
       <div class="about-section-divider">📮</div>
       <h2 class="about-section-title">CONTACT</h2>
-      ${toParagraphs(ABOUT.contact_body)}
-      <a href="mailto:${email}" style="color: var(--color-accent); text-decoration: underline; font-size: 18px;">
-        ${email}
+      <p>
+        NARRATIVEではインタビューを<br class="br-pc"/><br class="br-sp"/>受けて下さる方を募集しています。<br class="br-sp"/>自薦・他薦は問いません。<br class="br-pc"/><br class="br-sp"/>こちらまでお問い合わせください。
+      </p>
+      <a href="mailto:hello@narrative.jp" style="color: var(--color-accent); text-decoration: underline; font-size: 18px;">
+        hello@narrative.jp
       </a>
 
       <div class="about-section-divider">🤹‍♂️</div>
       <h2 class="about-section-title">INSPO</h2>
-      ${toParagraphs(ABOUT.inspo_body)}
+      <p>
+        本プロジェクトを始めるきっかけになった<br class="br-pc"/><br class="br-sp"/>作品・メディア・書籍・授業などです。<br class="br-pc"/><br class="br-sp"/>これらは語ることの意味、<br class="br-sp"/>記録することの価値、編集することの楽しさを<br class="br-pc"/><br class="br-sp"/>教えてくれたものたちです。
+      </p>
     </div>
   `;
 
@@ -644,15 +679,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     INTERVIEWS = data.items.filter(item => item.published !== false);
   } catch (e) {
     console.error("インタビューデータの読み込みに失敗しました:", e);
-  }
-
-  try {
-    const res = await fetch("data/about.json");
-    const data = await res.json();
-    ABOUT = data;
-    REFERENCES = data.references || [];
-  } catch (e) {
-    console.error("Aboutデータの読み込みに失敗しました:", e);
   }
 
   const navbarMenu = document.getElementById("navbar-menu");
