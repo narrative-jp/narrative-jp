@@ -1118,9 +1118,9 @@ img {
 
 /* ── 記事クレジット ── */
 .detail-credit {
-  margin-top: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: -0.08px;
   color: #8e8e93;
 }
