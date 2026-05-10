@@ -102,5 +102,4 @@ collections:
               - {name: id, label: "ID（例：R-007）", widget: string}
               - {name: title, label: "タイトル", widget: string}
               - {name: source, label: "著者 / メディア名", widget: string}
-              - {name: excerpt, label: "メモ", widget: text}
               - {name: url, label: "URL", widget: string}
