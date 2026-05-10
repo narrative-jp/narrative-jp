@@ -784,21 +784,22 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (!interview) return;
             const img = card.querySelector(".card-thumb-img");
             if (!img) return;
-            // フェードアウト → src差し替え → 読み込み完了後フェードイン
-            img.classList.add("is-switching");
-            setTimeout(() => {
-              const newSrc = getThumbSrc(interview, view);
-              const tmp = new Image();
-              tmp.onload = () => {
+            // クロスフェード: 新画像を上に重ねてフェードイン → 完了後に差し替え
+            const newSrc = getThumbSrc(interview, view);
+            const thumbDiv = card.querySelector(".card-thumb");
+            if (!thumbDiv) return;
+            const overlay = document.createElement("img");
+            overlay.style.cssText = "position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;animation:none;transition:opacity 0.35s ease;";
+            thumbDiv.appendChild(overlay);
+            overlay.onload = () => {
+              overlay.style.opacity = "1";
+              setTimeout(() => {
                 img.src = newSrc;
-                img.classList.remove("is-switching");
-              };
-              tmp.onerror = () => {
-                img.src = newSrc;
-                img.classList.remove("is-switching");
-              };
-              tmp.src = newSrc;
-            }, 150);
+                overlay.remove();
+              }, 370);
+            };
+            overlay.onerror = () => overlay.remove();
+            overlay.src = newSrc;
           });
         }
       });

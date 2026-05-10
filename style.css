@@ -455,10 +455,6 @@ html.dark .view-switcher-indicator {
   animation: fadeInThumb 0.35s ease forwards;
   transition: opacity 0.25s ease;
 }
-.card-thumb-img.is-switching {
-  opacity: 0 !important;
-  transition: opacity 0.15s ease;
-}
 @keyframes fadeInThumb {
   to { opacity: 1; }
 }
