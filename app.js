@@ -395,7 +395,7 @@ function getSortedInterviews() {
     // ID昇順（N-001 → N-025）
     list.sort((a, b) => a.id.localeCompare(b.id));
   } else if (currentSort === "name") {
-    list.sort((a, b) => a.name.localeCompare(b.name, "ja"));
+    list.sort((a, b) => a.alias.localeCompare(b.alias, "ja"));
   }
   return list;
 }
@@ -526,7 +526,7 @@ function renderDetailPage(id) {
 
     <div class="detail-profile">
       <div class="detail-profile-avatar" style="background: ${generateGradient(index)}">
-        ${interview.name.charAt(0)}
+        ${interview.alias.charAt(0)}
       </div>
       <div class="detail-profile-info">
         <span class="detail-profile-name">${interview.alias}</span>

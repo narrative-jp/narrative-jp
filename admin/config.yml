@@ -24,7 +24,6 @@ collections:
             summary: "{{fields.id}} — {{fields.alias}}（{{fields.occupation}}）"
             fields:
               - {name: id, label: "記事ID（例：N-026）", widget: string}
-              - {name: name, label: "本名", widget: string}
               - {name: alias, label: "表示名（例：山田さん（仮名））", widget: string}
               - {name: age, label: "年齢", widget: number}
               - {name: occupation, label: "職業", widget: string}
