@@ -282,7 +282,7 @@ let currentView = "portrait"; // "portrait" | "pickup"
 
 /**
  * 各インタビューのサムネイル画像パスを返す。
- * 画像は images/{id}-portrait.jpg, images/{id}-pickup.jpg の命名規則。
+ * 画像は images/{id}-portrait.jpg, images/{id}-pickup.jpg の命名規則（どちらも縦型3/4）。
  * 画像が存在しない場合は renderCard 側で onerror フォールバック。
  */
 function getThumbSrc(interview, view) {
