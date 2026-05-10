@@ -72,3 +72,35 @@ collections:
                         label: "キャプション（任意）"
                         widget: string
                         required: false
+
+  - name: about
+    label: Aboutページ
+    files:
+      - name: about_data
+        label: Aboutページの内容
+        file: data/about.json
+        fields:
+          - name: what_is_narrative
+            label: "WHAT IS NARRATIVE? 本文"
+            widget: text
+            hint: "段落の区切りは空行（Shift+Enter×2）"
+          - name: contact_body
+            label: "CONTACT 本文"
+            widget: text
+          - name: contact_email
+            label: "メールアドレス"
+            widget: string
+          - name: inspo_body
+            label: "INSPO 本文"
+            widget: text
+          - name: references
+            label: "INSPOカード一覧"
+            label_singular: "カード"
+            widget: list
+            summary: "{{fields.id}} — {{fields.title}}"
+            fields:
+              - {name: id, label: "ID（例：R-007）", widget: string}
+              - {name: title, label: "タイトル", widget: string}
+              - {name: source, label: "著者 / メディア名", widget: string}
+              - {name: excerpt, label: "メモ", widget: text}
+              - {name: url, label: "URL", widget: string}

@@ -7,50 +7,8 @@
 let INTERVIEWS = [];
 
 // ── Reference Data ──
-const REFERENCES = [
-  {
-    id: "R-001",
-    title: "タイトル（仮）",
-    source: "著者 / メディア名",
-    excerpt: "このリファレンスがプロジェクトに与えた影響についての短いメモ。",
-    url: "https://example.com"
-  },
-  {
-    id: "R-002",
-    title: "タイトル（仮）",
-    source: "著者 / メディア名",
-    excerpt: "このリファレンスがプロジェクトに与えた影響についての短いメモ。",
-    url: "https://example.com"
-  },
-  {
-    id: "R-003",
-    title: "タイトル（仮）",
-    source: "著者 / メディア名",
-    excerpt: "このリファレンスがプロジェクトに与えた影響についての短いメモ。",
-    url: "https://example.com"
-  },
-  {
-    id: "R-004",
-    title: "タイトル（仮）",
-    source: "著者 / メディア名",
-    excerpt: "このリファレンスがプロジェクトに与えた影響についての短いメモ。",
-    url: "https://example.com"
-  },
-  {
-    id: "R-005",
-    title: "タイトル（仮）",
-    source: "著者 / メディア名",
-    excerpt: "このリファレンスがプロジェクトに与えた影響についての短いメモ。",
-    url: "https://example.com"
-  },
-  {
-    id: "R-006",
-    title: "タイトル（仮）",
-    source: "著者 / メディア名",
-    excerpt: "このリファレンスがプロジェクトに与えた影響についての短いメモ。",
-    url: "https://example.com"
-  },
-];
+let REFERENCES = [];
+let ABOUT = {};
 
 // ── Utility: Generate gradient background for placeholder thumbnails ──
 function generateGradient(index) {
@@ -575,33 +533,28 @@ function renderAboutPage() {
   const container = document.createElement("div");
   container.className = "about-container animate-in";
 
+  const toParagraphs = text =>
+    (text || "").split("\n\n").map(p =>
+      `<p>${p.replace(/\n/g, "<br/>")}</p>`
+    ).join("");
+
+  const email = ABOUT.contact_email || "hello@narrative.jp";
+
   container.innerHTML = `
     <div class="about-body">
       <h2 class="about-section-title">WHAT IS NARRATIVE?</h2>
-      <p>
-        電車で隣に座っている人も、<br class="br-sp"/>いつも行くコンビニの店員も、<br class="br-pc"/><br class="br-sp"/>運転席で黙っているタクシー運転手も。
-      </p>
-      <p>
-      　私たちにはそれぞれの生い立ちがあり、<br class="br-sp"/>今日を生きています。
-      </p>
-      <p>
-        子どもの頃になにを見て、昨日なにを考えて、<br class="br-pc"/><br class="br-sp"/>明日なにをしようとしているのか。<br class="br-pc"/><br class="br-sp"/>インタビューを通して「誰か」である誰かの<br class="br-sp"/>人生を記録するメディアです。
-      </p>
+      ${toParagraphs(ABOUT.what_is_narrative)}
 
       <div class="about-section-divider">📮</div>
       <h2 class="about-section-title">CONTACT</h2>
-      <p>
-        NARRATIVEではインタビューを<br class="br-pc"/><br class="br-sp"/>受けて下さる方を募集しています。<br class="br-sp"/>自薦・他薦は問いません。<br class="br-pc"/><br class="br-sp"/>こちらまでお問い合わせください。
-      </p>
-      <a href="mailto:hello@narrative.jp" style="color: var(--color-accent); text-decoration: underline; font-size: 18px;">
-        hello@narrative.jp
+      ${toParagraphs(ABOUT.contact_body)}
+      <a href="mailto:${email}" style="color: var(--color-accent); text-decoration: underline; font-size: 18px;">
+        ${email}
       </a>
 
       <div class="about-section-divider">🤹‍♂️</div>
       <h2 class="about-section-title">INSPO</h2>
-      <p>
-        本プロジェクトを始めるきっかけになった<br class="br-pc"/><br class="br-sp"/>作品・メディア・書籍・授業などです。<br class="br-pc"/><br class="br-sp"/>これらは語ることの意味、<br class="br-sp"/>記録することの価値、編集することの楽しさを<br class="br-pc"/><br class="br-sp"/>教えてくれたものたちです。
-      </p>
+      ${toParagraphs(ABOUT.inspo_body)}
     </div>
   `;
 
@@ -679,6 +632,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     INTERVIEWS = data.items.filter(item => item.published !== false);
   } catch (e) {
     console.error("インタビューデータの読み込みに失敗しました:", e);
+  }
+
+  try {
+    const res = await fetch("data/about.json");
+    const data = await res.json();
+    ABOUT = data;
+    REFERENCES = data.references || [];
+  } catch (e) {
+    console.error("Aboutデータの読み込みに失敗しました:", e);
   }
 
   const navbarMenu = document.getElementById("navbar-menu");
