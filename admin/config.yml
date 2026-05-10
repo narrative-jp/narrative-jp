@@ -23,6 +23,10 @@ collections:
             widget: list
             summary: "{{fields.id}} — {{fields.alias}}（{{fields.occupation}}）"
             fields:
+              - name: published
+                label: "公開する"
+                widget: boolean
+                default: true
               - {name: id, label: "記事ID（例：N-026）", widget: string}
               - {name: alias, label: "表示名（例：山田さん（仮名））", widget: string}
               - {name: age, label: "年齢", widget: number}

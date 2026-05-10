@@ -676,7 +676,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const res = await fetch("data/interviews.json");
     const data = await res.json();
-    INTERVIEWS = data.items;
+    INTERVIEWS = data.items.filter(item => item.published !== false);
   } catch (e) {
     console.error("インタビューデータの読み込みに失敗しました:", e);
   }
