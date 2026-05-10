@@ -783,7 +783,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             const interview = INTERVIEWS.find(i => i.id === card.dataset.id);
             if (!interview) return;
             const img = card.querySelector(".card-thumb-img");
-            if (img) img.src = getThumbSrc(interview, view);
+            if (!img) return;
+            // フェードアウト → src差し替え → フェードイン
+            img.classList.add("is-switching");
+            setTimeout(() => {
+              img.src = getThumbSrc(interview, view);
+              img.classList.remove("is-switching");
+            }, 150);
           });
         }
       });
