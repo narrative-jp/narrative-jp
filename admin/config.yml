@@ -1,0 +1,41 @@
+backend:
+  name: github
+  repo: narrative-jp/narrative-jp
+  branch: main
+  base_url: https://OAUTH_WORKER_URL_HERE
+
+media_folder: images
+public_folder: /images
+
+locale: ja
+
+collections:
+  - name: interviews
+    label: インタビュー
+    files:
+      - name: interviews_data
+        label: インタビュー記事の管理
+        file: data/interviews.json
+        fields:
+          - name: items
+            label: インタビュー一覧
+            label_singular: インタビュー記事
+            widget: list
+            summary: "{{fields.id}} — {{fields.alias}}（{{fields.occupation}}）"
+            fields:
+              - {name: id, label: "記事ID（例：N-026）", widget: string}
+              - {name: name, label: "本名", widget: string}
+              - {name: alias, label: "表示名（例：山田さん（仮名））", widget: string}
+              - {name: age, label: "年齢", widget: number}
+              - {name: occupation, label: "職業", widget: string}
+              - {name: excerpt, label: "キャッチコピー（一覧に表示される引用文）", widget: string}
+              - name: tags
+                label: タグ
+                widget: list
+                field: {name: tag, label: タグ, widget: string}
+                hint: "例：エンジニア、20代、東京"
+              - name: content
+                label: "インタビュー本文"
+                widget: list
+                field: {name: paragraph, label: "段落テキスト", widget: text}
+                hint: "1段落ずつ追加。質問は「── 質問文」、画像は「[img]images/ファイル名.jpg」と入力"
