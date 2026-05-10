@@ -638,7 +638,7 @@ function renderAboutPage() {
     <div class="about-body">
       <h2 class="about-section-title">WHAT IS NARRATIVE?</h2>
       <p>
-        電車で隣に座っている人も、<br class="br-sp"/>いつも行くコンビニの店員も、<br class="br-pc"/><br class="br-sp"/>運転席で黙っているタクシー運転手も。
+        電車で隣に座ったその人も、<br class="br-sp"/>いつも行くコンビニのあの店員さんも、<br class="br-pc"/><br class="br-sp"/>この街に住む名物おじさんも。
       </p>
       <p>
       　私たちにはそれぞれの生い立ちがあり、<br class="br-sp"/>今日を生きています。
