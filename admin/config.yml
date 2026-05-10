@@ -29,6 +29,16 @@ collections:
               - {name: age, label: "年齢", widget: number}
               - {name: occupation, label: "職業", widget: string}
               - {name: excerpt, label: "キャッチコピー（一覧に表示される引用文）", widget: string}
+              - name: portrait
+                label: "ポートレート写真（縦型・3/4）"
+                widget: image
+                required: false
+                hint: "トップページのカード・記事詳細に使用されます"
+              - name: pickup
+                label: "ピックアップ写真（縦型・3/4）"
+                widget: image
+                required: false
+                hint: "ピックアップ表示モードのカードに使用されます"
               - name: tags
                 label: タグ
                 widget: list
