@@ -196,7 +196,7 @@ function sortWithFLIP(newSort) {
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       cards.forEach(card => {
-        card.style.transition = "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)";
+        card.style.transition = "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)";
         card.style.transform = "";
         card.addEventListener("transitionend", () => {
           card.style.transition = "";
