@@ -46,6 +46,10 @@
         {
           "type": "question",
           "text": "こんにちは"
+        },
+        {
+          "type": "paragraph",
+          "text": "ありがとうございました"
         }
       ],
       "credit": "by Yamamoto - 2026.05.01",
