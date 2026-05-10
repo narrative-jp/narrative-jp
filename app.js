@@ -784,11 +784,20 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (!interview) return;
             const img = card.querySelector(".card-thumb-img");
             if (!img) return;
-            // フェードアウト → src差し替え → フェードイン
+            // フェードアウト → src差し替え → 読み込み完了後フェードイン
             img.classList.add("is-switching");
             setTimeout(() => {
-              img.src = getThumbSrc(interview, view);
-              img.classList.remove("is-switching");
+              const newSrc = getThumbSrc(interview, view);
+              const tmp = new Image();
+              tmp.onload = () => {
+                img.src = newSrc;
+                img.classList.remove("is-switching");
+              };
+              tmp.onerror = () => {
+                img.src = newSrc;
+                img.classList.remove("is-switching");
+              };
+              tmp.src = newSrc;
             }, 150);
           });
         }
