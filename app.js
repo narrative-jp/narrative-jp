@@ -152,6 +152,61 @@ function initLiveFooter() {
   requestAnimationFrame(tick);
 }
 
+// ── FLIP Sort Animation ──
+function sortWithFLIP(newSort) {
+  const grid = document.querySelector(".card-grid");
+  if (!grid) {
+    currentSort = newSort;
+    renderHomePage();
+    return;
+  }
+
+  // Step 1: First — 現在の全カード位置を記録
+  const cards = [...grid.querySelectorAll(".card[data-id]")];
+  const firstRects = new Map();
+  cards.forEach(card => {
+    firstRects.set(card.dataset.id, card.getBoundingClientRect());
+  });
+
+  // Step 2: Last — 新しいソート順にDOMを並び替え
+  currentSort = newSort;
+  const sorted = getSortedInterviews();
+  sorted.forEach(interview => {
+    const card = grid.querySelector(`.card[data-id="${interview.id}"]`);
+    if (card) {
+      // animate-in を外してアニメーション干渉を防ぐ
+      card.classList.remove("animate-in");
+      card.style.animationDelay = "";
+      grid.appendChild(card);
+    }
+  });
+
+  // Step 3: Invert — 各カードに「元位置へ戻す」逆transform を瞬時適用
+  cards.forEach(card => {
+    const first = firstRects.get(card.dataset.id);
+    if (!first) return;
+    const last = card.getBoundingClientRect();
+    const dx = first.left - last.left;
+    const dy = first.top - last.top;
+    card.style.transition = "none";
+    card.style.transform = `translate(${dx}px, ${dy}px)`;
+  });
+
+  // Step 4: Play — transition で新位置へスライド
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      cards.forEach(card => {
+        card.style.transition = "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)";
+        card.style.transform = "";
+        card.addEventListener("transitionend", () => {
+          card.style.transition = "";
+          card.style.transform = "";
+        }, { once: true });
+      });
+    });
+  });
+}
+
 // ── Sort Button (floating) ──
 // #sort-float は styled <select>。タップで直接ネイティブピッカーが開く。
 function initScrollToTop() {
@@ -159,10 +214,12 @@ function initScrollToTop() {
   if (!picker) return;
 
   picker.addEventListener("change", (e) => {
-    currentSort = e.target.value;
+    const newSort = e.target.value;
     const route = getRoute();
     if (!route.startsWith("#/interview/") && route !== "#/about" && route !== "#/contact") {
-      renderHomePage();
+      sortWithFLIP(newSort);
+    } else {
+      currentSort = newSort;
     }
   });
 }
