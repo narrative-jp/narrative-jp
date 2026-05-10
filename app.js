@@ -192,11 +192,14 @@ function sortWithFLIP(newSort) {
     card.style.transform = `translate(${dx}px, ${dy}px)`;
   });
 
-  // Step 4: Play — transition で新位置へスライド
+  // Step 4: Play — 新順インデックスで stagger をかけながら新位置へスライド
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      cards.forEach(card => {
-        card.style.transition = "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)";
+      sorted.forEach((interview, i) => {
+        const card = grid.querySelector(`.card[data-id="${interview.id}"]`);
+        if (!card) return;
+        const delay = i * 18; // 18ms stagger
+        card.style.transition = `transform 0.75s ${delay}ms cubic-bezier(0.16, 1, 0.3, 1)`;
         card.style.transform = "";
         card.addEventListener("transitionend", () => {
           card.style.transition = "";
