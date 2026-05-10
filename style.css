@@ -1108,3 +1108,10 @@ html.dark .theme-toggle-thumb {
 .theme-toggle.is-on .theme-toggle-thumb {
   transform: translateX(20px);
 }
+
+/* ── 画像保存抑止 ── */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}

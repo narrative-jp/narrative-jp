@@ -759,6 +759,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     initMagneticHover(document.getElementById("navbar-icon"), { radius: 140, strength: 0.35 });
   }
 
+  // 画像保存抑止
+  document.addEventListener("contextmenu", e => {
+    if (e.target.tagName === "IMG") e.preventDefault();
+  });
+  document.addEventListener("dragstart", e => {
+    if (e.target.tagName === "IMG") e.preventDefault();
+  });
+
   // Route
   handleRoute();
   window.addEventListener("hashchange", handleRoute);
