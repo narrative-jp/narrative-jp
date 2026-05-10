@@ -297,6 +297,7 @@ function renderCard(interview, index) {
   const card = document.createElement("div");
   card.className = "card animate-in";
   card.style.animationDelay = `${Math.min(index * 30, 300)}ms`;
+  card.addEventListener("animationend", () => card.classList.remove("animate-in"), { once: true });
   card.setAttribute("role", "article");
   card.addEventListener("click", () => navigate(`/interview/${interview.id}`));
 
@@ -347,6 +348,7 @@ function renderReferenceCard(ref, index) {
   const card = document.createElement("div");
   card.className = "card animate-in";
   card.style.animationDelay = `${Math.min(index * 30, 300)}ms`;
+  card.addEventListener("animationend", () => card.classList.remove("animate-in"), { once: true });
   card.setAttribute("role", "article");
   card.style.cursor = "pointer";
   card.addEventListener("click", () => window.open(ref.url, "_blank", "noopener"));
