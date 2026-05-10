@@ -297,6 +297,7 @@ function renderCard(interview, index) {
   const card = document.createElement("div");
   card.className = "card animate-in";
   card.style.animationDelay = `${Math.min(index * 30, 300)}ms`;
+  card.dataset.id = interview.id;
   card.setAttribute("role", "article");
   card.addEventListener("click", () => navigate(`/interview/${interview.id}`));
 
@@ -775,10 +776,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         // インジケーター位置をdata属性で制御
         viewSwitcher.dataset.view = view;
 
-        // ホーム画面表示中なら再描画
+        // ホーム画面表示中なら画像srcだけ差し替え（再描画なし）
         const route = getRoute();
         if (!route.startsWith("#/interview/") && route !== "#/about" && route !== "#/contact") {
-          renderHomePage();
+          document.querySelectorAll(".card[data-id]").forEach(card => {
+            const interview = INTERVIEWS.find(i => i.id === card.dataset.id);
+            if (!interview) return;
+            const img = card.querySelector(".card-thumb-img");
+            if (img) img.src = getThumbSrc(interview, view);
+          });
         }
       });
     });
