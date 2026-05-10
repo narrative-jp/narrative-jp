@@ -1042,23 +1042,20 @@ html.dark .sort-float {
   to   { opacity: 1; }
 }
 .animate-in {
-  animation: fadeIn 1.2s ease both;
+  animation: fadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* ── ページ遷移オーバーレイ ── */
-#page-overlay {
-  position: fixed;
-  inset: 0;
-  background: var(--color-bg);
-  pointer-events: none;
-  opacity: 0;
-  z-index: 999;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  transition: opacity 0.25s ease-in;
+/* ── ページ遷移: blur + fade ── */
+@keyframes pageBlurOut {
+  from { opacity: 1; filter: blur(0px); }
+  to   { opacity: 0; filter: blur(10px); }
 }
-#page-overlay.is-visible {
-  opacity: 0.85;
+#app.page-exit {
+  animation: pageBlurOut 0.2s ease-in forwards;
+  pointer-events: none;
+}
+#app.page-entering {
+  transition: filter 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ── Empty state ── */

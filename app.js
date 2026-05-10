@@ -424,8 +424,6 @@ function formatHeroTime(now) {
 }
 
 let heroTimerID = null;
-let isFirstRoute = true;
-let isRouting = false;
 
 function renderHomePage() {
   const app = document.getElementById("app");
@@ -623,50 +621,63 @@ function renderAboutPage() {
 }
 
 // ── Router ──
-async function handleRoute() {
-  if (isRouting) return;
-  isRouting = true;
-
-  if (heroTimerID) { clearInterval(heroTimerID); heroTimerID = null; }
-
+// ── ページ遷移: blur + fade ──
+function transitionPage(renderFn) {
   const app = document.getElementById("app");
+
+  // 初回レンダリング（コンテンツなし）はそのまま描画
+  if (!app.children.length) {
+    renderFn();
+    return;
+  }
+
+  // 退場: blur + fade out
+  app.classList.add("page-exit");
+
+  setTimeout(() => {
+    app.classList.remove("page-exit");
+    // 入場開始状態: blur をセット
+    app.style.filter = "blur(10px)";
+    // 新しいコンテンツを描画
+    renderFn();
+    // 2フレーム後に transition を有効化して blur を解除
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        app.classList.add("page-entering");
+        app.style.filter = "";
+        app.addEventListener("transitionend", () => {
+          app.classList.remove("page-entering");
+        }, { once: true });
+      });
+    });
+  }, 230);
+}
+
+function handleRoute() {
+  if (heroTimerID) { clearInterval(heroTimerID); heroTimerID = null; }
 
   // フッターをデフォルトで表示に戻す
   const footer = document.querySelector(".footer");
   if (footer) footer.style.display = "";
 
-  // ページ遷移: exit（初回ロードはスキップ）
-  const overlay = document.getElementById("page-overlay");
-  if (!isFirstRoute && overlay) {
-    overlay.style.transition = "opacity 0.25s ease-in";
-    overlay.classList.add("is-visible");
-    await new Promise(r => setTimeout(r, 280));
-  }
-
   // shop-page クラスをリセット
-  app.classList.remove("shop-page");
+  document.getElementById("app").classList.remove("shop-page");
 
   const route = getRoute();
   const isHome = !route.startsWith("#/interview/") && route !== "#/about" && route !== "#/contact" && route !== "#/shop";
 
-  if (route.startsWith("#/interview/")) {
-    const id = route.replace("#/interview/", "");
-    renderDetailPage(id);
-  } else if (route === "#/about") {
-    renderAboutPage();
-  } else if (route === "#/shop") {
-    renderShopPage();
-  } else {
-    renderHomePage();
-  }
-
-  // ページ遷移: enter（初回ロードはスキップ）
-  if (!isFirstRoute && overlay) {
-    overlay.style.transition = "opacity 0.4s ease-out";
-    overlay.classList.remove("is-visible");
-  }
-
-  isFirstRoute = false;
+  transitionPage(() => {
+    if (route.startsWith("#/interview/")) {
+      const id = route.replace("#/interview/", "");
+      renderDetailPage(id);
+    } else if (route === "#/about") {
+      renderAboutPage();
+    } else if (route === "#/shop") {
+      renderShopPage();
+    } else {
+      renderHomePage();
+    }
+  });
 
   // View Switcher の表示制御（ホームのみ表示）
   const viewSwitcher = document.getElementById("view-switcher");
@@ -692,8 +703,6 @@ async function handleRoute() {
       navbarMenu.selectedIndex = 0; // "NARRATIVE"
     }
   }
-
-  isRouting = false;
 }
 
 // ── Init ──
