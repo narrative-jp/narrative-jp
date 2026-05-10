@@ -1121,6 +1121,7 @@ img {
   margin-top: var(--spacing-2xl);
   font-size: 13px;
   font-weight: 500;
+  font-style: italic;
   letter-spacing: -0.08px;
   color: #8e8e93;
 }
