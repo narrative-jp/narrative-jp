@@ -1,11 +1,14 @@
 {
   "items": [
     {
-      "id": "N-001",
-      "alias": "遠藤さん（仮名）",
-      "age": 25,
-      "occupation": "会社員",
       "excerpt": "それを遠慮の帰って言うらしいですよ。僕はずっと、自分の言葉で話すことが苦手だった。",
+      "occupation": "会社員",
+      "published": true,
+      "alias": "遠藤さん（仮名）",
+      "tags": [
+        "20代",
+        "東京"
+      ],
       "content": [
         {
           "type": "question",
@@ -45,11 +48,9 @@
           "text": "こんにちは"
         }
       ],
-      "tags": [
-        "20代",
-        "東京"
-      ],
-      "published": true
+      "credit": "by Yamamoto - 2026.05.01",
+      "id": "N-001",
+      "age": 25
     },
     {
       "id": "N-002",
