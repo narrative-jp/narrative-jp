@@ -17,7 +17,8 @@
         },
         {
           "type": "image",
-          "src": "images/contents_test_1.JPG"
+          "src": "images/contents_test_1.JPG",
+          "caption": "韓国の工場"
         },
         {
           "type": "paragraph",
