@@ -297,7 +297,6 @@ function renderCard(interview, index) {
   const card = document.createElement("div");
   card.className = "card animate-in";
   card.style.animationDelay = `${Math.min(index * 30, 300)}ms`;
-  card.addEventListener("animationend", () => card.classList.remove("animate-in"), { once: true });
   card.setAttribute("role", "article");
   card.addEventListener("click", () => navigate(`/interview/${interview.id}`));
 
@@ -348,7 +347,6 @@ function renderReferenceCard(ref, index) {
   const card = document.createElement("div");
   card.className = "card animate-in";
   card.style.animationDelay = `${Math.min(index * 30, 300)}ms`;
-  card.addEventListener("animationend", () => card.classList.remove("animate-in"), { once: true });
   card.setAttribute("role", "article");
   card.style.cursor = "pointer";
   card.addEventListener("click", () => window.open(ref.url, "_blank", "noopener"));
@@ -426,6 +424,8 @@ function formatHeroTime(now) {
 }
 
 let heroTimerID = null;
+let isFirstRoute = true;
+let isRouting = false;
 
 function renderHomePage() {
   const app = document.getElementById("app");
@@ -623,15 +623,27 @@ function renderAboutPage() {
 }
 
 // ── Router ──
-function handleRoute() {
+async function handleRoute() {
+  if (isRouting) return;
+  isRouting = true;
+
   if (heroTimerID) { clearInterval(heroTimerID); heroTimerID = null; }
+
+  const app = document.getElementById("app");
 
   // フッターをデフォルトで表示に戻す
   const footer = document.querySelector(".footer");
   if (footer) footer.style.display = "";
 
+  // ページ遷移: exit アニメーション（初回ロードはスキップ）
+  if (!isFirstRoute) {
+    app.classList.add("page-exit");
+    await new Promise(r => setTimeout(r, 250));
+    app.classList.remove("page-exit");
+  }
+
   // shop-page クラスをリセット
-  document.getElementById("app").classList.remove("shop-page");
+  app.classList.remove("shop-page");
 
   const route = getRoute();
   const isHome = !route.startsWith("#/interview/") && route !== "#/about" && route !== "#/contact" && route !== "#/shop";
@@ -646,6 +658,14 @@ function handleRoute() {
   } else {
     renderHomePage();
   }
+
+  // ページ遷移: enter アニメーション（初回ロードはスキップ）
+  if (!isFirstRoute) {
+    app.classList.add("page-enter");
+    app.addEventListener("animationend", () => app.classList.remove("page-enter"), { once: true });
+  }
+
+  isFirstRoute = false;
 
   // View Switcher の表示制御（ホームのみ表示）
   const viewSwitcher = document.getElementById("view-switcher");
@@ -671,6 +691,8 @@ function handleRoute() {
       navbarMenu.selectedIndex = 0; // "NARRATIVE"
     }
   }
+
+  isRouting = false;
 }
 
 // ── Init ──
