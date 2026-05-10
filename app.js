@@ -309,11 +309,13 @@ function renderReferenceCard(ref, index) {
   card.style.cursor = "pointer";
   card.addEventListener("click", () => window.open(ref.url, "_blank", "noopener"));
 
-  const gradient = generateGradient(index);
+  const gradient = generateGradient(ref.id || index);
 
   card.innerHTML = `
     <div class="card-thumb-wrapper">
-      <div class="card-thumb" style="background: ${gradient}"></div>
+      <div class="card-thumb" style="background: ${gradient}">
+        ${ref.image ? `<img class="card-thumb-img" src="${ref.image}" alt="${ref.title}" loading="lazy" onerror="this.style.display='none'" />` : ""}
+      </div>
       <span class="card-id">${ref.id}</span>
       <span class="card-external">${ICONS.external}</span>
     </div>

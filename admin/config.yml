@@ -100,6 +100,10 @@ collections:
             summary: "{{fields.id}} — {{fields.title}}"
             fields:
               - {name: id, label: "ID（例：R-007）", widget: string}
+              - name: image
+                label: "サムネイル写真（縦型・3/4）"
+                widget: image
+                required: false
               - {name: title, label: "タイトル", widget: string}
               - {name: source, label: "著者 / メディア名", widget: string}
               - {name: url, label: "URL", widget: string}
