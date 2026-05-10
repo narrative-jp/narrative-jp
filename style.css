@@ -1045,17 +1045,21 @@ html.dark .sort-float {
   animation: fadeIn 1.2s ease both;
 }
 
-/* ── ページ遷移 ── */
-@keyframes pageExit {
-  from { opacity: 1; filter: blur(0px); }
-  to   { opacity: 0; filter: blur(5px); }
+/* ── ページ遷移オーバーレイ ── */
+#page-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 999;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: opacity 0.25s ease-in;
 }
-@keyframes pageEnter {
-  from { opacity: 0; filter: blur(5px); }
-  to   { opacity: 1; filter: blur(0px); }
+#page-overlay.is-visible {
+  opacity: 0.85;
 }
-#app.page-exit  { animation: pageExit  0.25s ease-in  both; }
-#app.page-enter { animation: pageEnter 0.4s  ease-out both; }
 
 /* ── Empty state ── */
 .empty-state {

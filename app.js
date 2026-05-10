@@ -635,11 +635,12 @@ async function handleRoute() {
   const footer = document.querySelector(".footer");
   if (footer) footer.style.display = "";
 
-  // ページ遷移: exit アニメーション（初回ロードはスキップ）
-  if (!isFirstRoute) {
-    app.classList.add("page-exit");
-    await new Promise(r => setTimeout(r, 250));
-    app.classList.remove("page-exit");
+  // ページ遷移: exit（初回ロードはスキップ）
+  const overlay = document.getElementById("page-overlay");
+  if (!isFirstRoute && overlay) {
+    overlay.style.transition = "opacity 0.25s ease-in";
+    overlay.classList.add("is-visible");
+    await new Promise(r => setTimeout(r, 280));
   }
 
   // shop-page クラスをリセット
@@ -659,10 +660,10 @@ async function handleRoute() {
     renderHomePage();
   }
 
-  // ページ遷移: enter アニメーション（初回ロードはスキップ）
-  if (!isFirstRoute) {
-    app.classList.add("page-enter");
-    app.addEventListener("animationend", () => app.classList.remove("page-enter"), { once: true });
+  // ページ遷移: enter（初回ロードはスキップ）
+  if (!isFirstRoute && overlay) {
+    overlay.style.transition = "opacity 0.4s ease-out";
+    overlay.classList.remove("is-visible");
   }
 
   isFirstRoute = false;
