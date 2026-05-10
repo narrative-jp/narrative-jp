@@ -497,7 +497,8 @@ function renderDetailPage(id) {
 
   const contentHtml = interview.content.map(block => {
     if (block.type === "image") {
-      return `<img class="detail-content-img" src="${block.src}" alt="" loading="lazy" />`;
+      const caption = block.caption ? `<figcaption class="detail-content-caption">${block.caption}</figcaption>` : "";
+      return `<figure class="detail-content-figure"><img class="detail-content-img" src="${block.src}" alt="${block.caption || ""}" loading="lazy" />${caption}</figure>`;
     }
     const text = block.text ?? block;
     return `<p class="${String(text).startsWith("──") ? "question" : ""}">${text}</p>`;
