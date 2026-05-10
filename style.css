@@ -1115,3 +1115,16 @@ img {
   user-select: none;
   -webkit-user-select: none;
 }
+
+/* ── 記事クレジット ── */
+.detail-credit {
+  margin-top: var(--spacing-xl);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.08px;
+  color: #8e8e93;
+  text-align: right;
+}
+html.dark .detail-credit {
+  color: var(--color-label-tertiary);
+}

@@ -541,6 +541,7 @@ function renderDetailPage(id) {
     <div class="detail-tags">${tagsHtml}</div>
 
     <div class="detail-content">${contentHtml}</div>
+    ${interview.credit ? `<p class="detail-credit">${interview.credit}</p>` : ""}
   `;
 
   app.appendChild(container);

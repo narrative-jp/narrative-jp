@@ -47,6 +47,10 @@ collections:
                 widget: list
                 field: {name: tag, label: タグ, widget: string}
                 hint: "例：エンジニア、20代、東京"
+              - name: credit
+                label: "クレジット（例：by Yamamoto 2026.05.10）"
+                widget: string
+                required: false
               - name: content
                 label: "インタビュー本文"
                 widget: list
