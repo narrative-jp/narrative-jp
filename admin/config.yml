@@ -52,6 +52,11 @@ collections:
                     widget: object
                     fields:
                       - {name: text, label: "本文", widget: text}
+                  - name: question
+                    label: "質問（── が自動付与されます）"
+                    widget: object
+                    fields:
+                      - {name: text, label: "質問文", widget: string}
                   - name: image
                     label: "画像"
                     widget: object

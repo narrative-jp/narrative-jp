@@ -500,6 +500,9 @@ function renderDetailPage(id) {
       const caption = block.caption ? `<figcaption class="detail-content-caption">${block.caption}</figcaption>` : "";
       return `<figure class="detail-content-figure"><img class="detail-content-img" src="${block.src}" alt="${block.caption || ""}" loading="lazy" />${caption}</figure>`;
     }
+    if (block.type === "question") {
+      return `<p class="question">── ${block.text}</p>`;
+    }
     const text = block.text ?? block;
     return `<p class="${String(text).startsWith("──") ? "question" : ""}">${text}</p>`;
   }).join("");
