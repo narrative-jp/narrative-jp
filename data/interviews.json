@@ -526,17 +526,6 @@
         "30代",
         "奈良"
       ]
-    },
-    {
-      "id": "N-026",
-      "name": "はらくん",
-      "alias": "原くん",
-      "age": 25,
-      "occupation": "照明部",
-      "excerpt": "国民健康保険を払わないとソウルにいけません",
-      "content": [
-        "── 質問文\n[img]images/contents_test_1.jpg"
-      ]
     }
   ]
 }
