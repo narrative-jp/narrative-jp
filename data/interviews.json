@@ -3,7 +3,7 @@
     {
       "excerpt": "それを遠慮の帰って言うらしいですよ。僕はずっと、自分の言葉で話すことが苦手だった。",
       "occupation": "会社員",
-      "published": true,
+      "published": false,
       "alias": "遠藤さん（仮名）",
       "tags": [
         "20代",
@@ -95,7 +95,7 @@
         "30代",
         "大阪"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-003",
@@ -134,7 +134,7 @@
         "20代",
         "東京"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-004",
@@ -173,7 +173,7 @@
         "40代",
         "埼玉"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-005",
@@ -212,7 +212,7 @@
         "30代",
         "長野"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-006",
@@ -251,7 +251,7 @@
         "20代",
         "京都"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-007",
@@ -290,7 +290,7 @@
         "50代",
         "東京"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-008",
@@ -329,7 +329,7 @@
         "20代",
         "神奈川"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-009",
@@ -368,7 +368,7 @@
         "30代",
         "東京"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-010",
@@ -407,7 +407,7 @@
         "40代",
         "福岡"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-011",
@@ -446,7 +446,7 @@
         "20代",
         "千葉"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-012",
@@ -485,7 +485,7 @@
         "30代",
         "東京"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-013",
@@ -524,7 +524,7 @@
         "30代",
         "北海道"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-014",
@@ -563,7 +563,7 @@
         "20代",
         "神戸"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-015",
@@ -602,7 +602,7 @@
         "50代",
         "三重"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-016",
@@ -641,7 +641,7 @@
         "30代",
         "東京"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-017",
@@ -680,7 +680,7 @@
         "40代",
         "新潟"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-018",
@@ -719,7 +719,7 @@
         "20代",
         "愛知"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-019",
@@ -758,7 +758,7 @@
         "60代",
         "宮城"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-020",
@@ -797,7 +797,7 @@
         "30代",
         "鎌倉"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-021",
@@ -836,7 +836,7 @@
         "30代",
         "京都"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-022",
@@ -875,7 +875,7 @@
         "40代",
         "広島"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-023",
@@ -914,7 +914,7 @@
         "20代",
         "福井"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-024",
@@ -953,7 +953,7 @@
         "70代",
         "滋賀"
       ],
-      "published": true
+      "published": false
     },
     {
       "id": "N-025",
