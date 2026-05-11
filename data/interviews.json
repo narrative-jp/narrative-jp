@@ -999,12 +999,21 @@
       "occupation": "？？？",
       "published": true,
       "alias": "？？？",
+      "tags": [
+        "Coming",
+        "Soon"
+      ],
       "content": [
         {
           "type": "question",
           "text": "近日公開"
+        },
+        {
+          "type": "paragraph",
+          "text": "近日公開"
         }
       ],
+      "credit": "Coming Soon",
       "id": "N-00",
       "portrait": "/images/comingsoon_01.jpg",
       "pickup": "/images/contents_test_1.jpg",
@@ -1015,13 +1024,21 @@
       "occupation": "？？？",
       "published": true,
       "alias": "？？？",
+      "tags": [
+        "Coming",
+        "Soon"
+      ],
       "content": [
         {
           "type": "question",
           "text": "近日公開"
+        },
+        {
+          "type": "paragraph",
+          "text": "近日公開"
         }
       ],
-      "credit": "",
+      "credit": "Coming Soon",
       "id": "N-000",
       "portrait": "/images/comingsoon_02.jpg",
       "pickup": "/images/contents_test_2.jpeg",
