@@ -638,15 +638,17 @@ function renderAboutPage() {
   container.innerHTML = `
     <div class="about-body">
       <h2 class="about-section-title"></h2>
-      <p>
-        いつも行くコンビニのあの店員さんが<br class="br-pc"/><br class="br-sp"/>子どもの頃なにを見ていたか。<br class="br-pc"/><br class="br-sp"/>電車で隣に座ったその人が<br class="br-pc"/><br class="br-sp"/>これまでにどんな修羅場を潜り抜けたのか。<br class="br-pc"/><br class="br-sp"/>この街の名物おじさんが<br class="br-pc"/><br class="br-sp"/>最近なにに感動して泣いたのか。
-      </p>
-      <p>
-       普段通り過ぎている誰もが、<br class="br-sp"/>誰かである誰かで、<br class="br-pc"/><br class="br-sp"/>今日に至るまでの物語があります。
-      </p>
-      <p>
-        NARRATIVEは、<br class="br-sp"/>そんな人たちの超個人的な話を<br class="br-pc"/><br class="br-sp"/>聞いていくメディアです。
-      </p>
+      <div class="about-intro">
+        <p>
+          いつも行くコンビニのあの店員さんが<br class="br-pc"/><br class="br-sp"/>子どもの頃なにを見ていたか。<br class="br-pc"/><br class="br-sp"/>電車で隣に座ったその人が<br class="br-pc"/><br class="br-sp"/>これまでにどんな修羅場を潜り抜けたのか。<br class="br-pc"/><br class="br-sp"/>この街の名物おじさんが<br class="br-pc"/><br class="br-sp"/>最近なにに感動して泣いたのか。
+        </p>
+        <p>
+         普段通り過ぎている誰もが、<br class="br-sp"/>誰かである誰かで、<br class="br-pc"/><br class="br-sp"/>今日に至るまでの物語があります。
+        </p>
+        <p>
+          NARRATIVEは、<br class="br-sp"/>そんな人たちの超個人的な話を<br class="br-pc"/><br class="br-sp"/>聞いていくメディアです。
+        </p>
+      </div>
 
       <div class="about-section-divider">📮</div>
       <h2 class="about-section-title">CONTACT</h2>

@@ -867,6 +867,11 @@ html.dark .detail-content-caption {
   flex-direction: column;
   /*gap: var(--spacing-xs);*/
 }
+.about-intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
 .about-body p {
   font-size: 17px;
   line-height: 1.65;
