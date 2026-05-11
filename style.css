@@ -900,6 +900,7 @@ html.dark .detail-content-caption {
   letter-spacing: -0.5px;
   margin-top: var(--spacing-2xl);
   color: var(--color-label);
+  line-height: 1.25;
 }
 .about-section-divider {
   font-size: 34px;
