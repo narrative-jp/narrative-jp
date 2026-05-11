@@ -641,7 +641,7 @@ function renderAboutPage() {
         電車で隣に座ったその人も、<br class="br-sp"/>いつも行くコンビニのあの店員さんも、<br class="br-pc"/><br class="br-sp"/>この街に住む名物おじさんも。
       </p>
       <p>
-      　すれ違うだけではたぶん知ることのない、<br class="br-sp"/>その人のこれまでのこと。
+       すれ違うだけではたぶん知ることのない、<br class="br-sp"/>その人のこれまでのこと。
       </p>
       <p>
         子どもの頃になにを見て、昨日なにを考えて、<br class="br-pc"/><br class="br-sp"/>明日なにをしようとしているのか。<br class="br-pc"/><br class="br-sp"/>そんな人たちの、すこし個人的な話を<br class="br-sp"/>聞きにいくメディアです。
