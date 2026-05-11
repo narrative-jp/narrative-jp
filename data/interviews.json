@@ -995,18 +995,20 @@
       "published": false
     },
     {
-      "published": true,
-      "id": "N-000",
-      "alias": "？？？",
-      "age": 0,
-      "occupation": "？？？",
       "excerpt": "COMING SOON",
+      "occupation": "？？？",
+      "published": true,
+      "alias": "？？？",
       "content": [
         {
           "type": "question",
           "text": "近日公開"
         }
-      ]
+      ],
+      "id": "N-000",
+      "portrait": "/images/comingsoon_01.jpg",
+      "pickup": "/images/contents_test_1.jpg",
+      "age": 0
     }
   ]
 }
