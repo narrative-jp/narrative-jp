@@ -64,11 +64,12 @@ function generateGradient(index) {
 
 // ── Simple Hash Router ──
 function navigate(path) {
-  window.location.hash = path;
+  history.pushState(null, null, path);
+  handleRoute();
 }
 
 function getRoute() {
-  return window.location.hash || "#/";
+  return window.location.pathname || "/";
 }
 
 // ── SVG Icons ──
@@ -216,7 +217,7 @@ function initScrollToTop() {
   picker.addEventListener("change", (e) => {
     const newSort = e.target.value;
     const route = getRoute();
-    if (!route.startsWith("#/interview/") && route !== "#/about" && route !== "#/contact") {
+    if (!route.startsWith("/interview/") && route !== "/about" && route !== "/contact") {
       sortWithFLIP(newSort);
     } else {
       currentSort = newSort;
@@ -719,15 +720,15 @@ function handleRoute() {
   document.getElementById("app").classList.remove("shop-page");
 
   const route = getRoute();
-  const isHome = !route.startsWith("#/interview/") && route !== "#/about" && route !== "#/contact" && route !== "#/shop";
+  const isHome = !route.startsWith("/interview/") && route !== "/about" && route !== "/contact" && route !== "/shop";
 
   transitionPage(() => {
-    if (route.startsWith("#/interview/")) {
-      const id = route.replace("#/interview/", "");
+    if (route.startsWith("/interview/")) {
+      const id = route.replace("/interview/", "");
       renderDetailPage(id);
-    } else if (route === "#/about") {
+    } else if (route === "/about") {
       renderAboutPage();
-    } else if (route === "#/shop") {
+    } else if (route === "/shop") {
       renderShopPage();
     } else {
       renderHomePage();
@@ -750,9 +751,9 @@ function handleRoute() {
   // Navbar メニューのステータス表示
   const navbarMenu = document.getElementById("navbar-menu");
   if (navbarMenu) {
-    if (route === "#/about") {
+    if (route === "/about") {
       navbarMenu.value = "about";
-    } else if (route === "#/shop") {
+    } else if (route === "/shop") {
       navbarMenu.value = "shop";
     } else {
       navbarMenu.selectedIndex = 0; // "NARRATIVE"
@@ -832,7 +833,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         // ホーム画面表示中なら画像srcだけ差し替え（再描画なし）
         const route = getRoute();
-        if (!route.startsWith("#/interview/") && route !== "#/about" && route !== "#/contact") {
+        if (!route.startsWith("/interview/") && route !== "/about" && route !== "/contact") {
           document.querySelectorAll(".card[data-id]").forEach(card => {
             const interview = INTERVIEWS.find(i => i.id === card.dataset.id);
             if (!interview) return;
@@ -880,5 +881,5 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Route
   handleRoute();
-  window.addEventListener("hashchange", handleRoute);
+  window.addEventListener("popstate", handleRoute);
 });

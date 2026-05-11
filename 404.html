@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    // GitHub Pages 用 SPA リダイレクト
+    // アクセスされた URL を sessionStorage に保存してルートへ転送
+    sessionStorage.setItem('spa_redirect', location.href);
+    location.replace('/');
+  </script>
+</head>
+</html>
