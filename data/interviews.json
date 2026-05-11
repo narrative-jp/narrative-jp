@@ -1009,6 +1009,23 @@
       "portrait": "/images/comingsoon_01.jpg",
       "pickup": "/images/contents_test_1.jpg",
       "age": 0
+    },
+    {
+      "excerpt": "COMING SOON",
+      "occupation": "？？？",
+      "published": true,
+      "alias": "？？？",
+      "content": [
+        {
+          "type": "question",
+          "text": "近日公開"
+        }
+      ],
+      "credit": "",
+      "id": "N-000",
+      "portrait": "/images/comingsoon_02.jpg",
+      "pickup": "/images/contents_test_2.jpeg",
+      "age": 0
     }
   ]
 }
