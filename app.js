@@ -636,7 +636,7 @@ function renderAboutPage() {
 
   container.innerHTML = `
     <div class="about-body">
-      <h2 class="about-section-title">WHAT IS NARRATIVE</h2>
+      <h2 class="about-section-title"></h2>
       <p>
         いつも行くコンビニのあの店員さんが<br class="br-pc"/><br class="br-sp"/>子どもの頃なにを見ていたか。<br class="br-pc"/><br class="br-sp"/>電車で隣に座ったその人が<br class="br-pc"/><br class="br-sp"/>これまでにどんな修羅場を潜り抜けたのか。<br class="br-pc"/><br class="br-sp"/>この街の名物おじさんが<br class="br-pc"/><br class="br-sp"/>最近なにに感動して泣いたのか。
       </p>
