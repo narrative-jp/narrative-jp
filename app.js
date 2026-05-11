@@ -616,7 +616,7 @@ function renderShopPage() {
 
   const container = document.createElement("div");
   container.className = "shop-soon animate-in";
-  container.innerHTML = `<span>Soon🏗️</span>`;
+  container.innerHTML = `<span>Soon 🏗️</span>`;
   app.appendChild(container);
 
 
@@ -636,15 +636,15 @@ function renderAboutPage() {
 
   container.innerHTML = `
     <div class="about-body">
-      <h2 class="about-section-title">WHAT IS NARRATIVE?</h2>
+      <h2 class="about-section-title">WHAT IS NARRATIVE</h2>
       <p>
         電車で隣に座ったその人も、<br class="br-sp"/>いつも行くコンビニのあの店員さんも、<br class="br-pc"/><br class="br-sp"/>この街に住む名物おじさんも。
       </p>
       <p>
-      　私たちにはそれぞれの生い立ちがあり、<br class="br-sp"/>今日を生きています。
+      　すれ違うだけではたぶん知ることのない、<br class="br-sp"/>その人のこれまでのこと。
       </p>
       <p>
-        子どもの頃になにを見て、昨日なにを考えて、<br class="br-pc"/><br class="br-sp"/>明日なにをしようとしているのか。<br class="br-pc"/><br class="br-sp"/>インタビューを通して「誰か」である誰かの<br class="br-sp"/>人生を記録するメディアです。
+        子どもの頃になにを見て、昨日なにを考えて、<br class="br-pc"/><br class="br-sp"/>明日なにをしようとしているのか。<br class="br-pc"/><br class="br-sp"/>そんな人たちの、すこし個人的な話を<br class="br-sp"/>聞きにいくメディアです。
       </p>
 
       <div class="about-section-divider">📮</div>
@@ -657,10 +657,7 @@ function renderAboutPage() {
       </a>
 
       <div class="about-section-divider">🤹‍♂️</div>
-      <h2 class="about-section-title">INSPO</h2>
-      <p>
-        本プロジェクトを始めるきっかけになった<br class="br-pc"/><br class="br-sp"/>作品・メディア・書籍・授業などです。<br class="br-pc"/><br class="br-sp"/>これらは語ることの意味、<br class="br-sp"/>記録することの価値、編集することの楽しさを<br class="br-pc"/><br class="br-sp"/>教えてくれたものたちです。
-      </p>
+      <h2 class="about-section-title">⬇️ INSPO ⬇️</h2>
     </div>
   `;
 
