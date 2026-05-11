@@ -895,11 +895,10 @@ html.dark .detail-content-caption {
   }
 }
 .about-section-title {
-  font-size: 23px;
+  font-size: 22px;
   font-weight: 500;
   letter-spacing: -0.5px;
   margin-top: var(--spacing-2xl);
-  margin-bottom: var(--spacing-xs);
   color: var(--color-label);
 }
 .about-section-divider {
